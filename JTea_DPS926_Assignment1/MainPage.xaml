@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JTea_DPS926_Assignment1.MainPage">
+
+    <Grid RowSpacing="10" ColumnSpacing="10" Padding="40" Opacity="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="ProductName" Grid.Row="0" Grid.ColumnSpan="3" Text="Type" TextColor="Black" VerticalOptions="Center" FontSize="30"/>
+        <Button Grid.Row="1" Grid.Column="0" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="1" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="1" Grid.Column="1" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="2" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="1" Grid.Column="2" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="3" Clicked="OnNumberClicked"/>
+        <Label x:Name="Total" Grid.Row="1" Grid.Column="3" FontSize="20" TextColor="Black" Text="Total"/>
+
+        <Button Grid.Row="2" Grid.Column="0" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="4" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="2" Grid.Column="1" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="5" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="2" Grid.Column="2" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="6" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" FontSize="20" TextColor="White" BorderRadius="10" BackgroundColor="Blue" Text="Buy" FontAttributes="Bold" Clicked="Buy"/>
+
+        <Button Grid.Row="3" Grid.Column="0" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="7" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="3" Grid.Column="1" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="8" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="3" Grid.Column="2" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="9" Clicked="OnNumberClicked"/>
+
+        <Button Grid.Row="4" Grid.Column="0" FontSize="20" TextColor="#28282c" BorderRadius="10" BackgroundColor="#fff" Text="CE" Clicked="ClearCalculator"/>
+        <Button Grid.Row="4" Grid.Column="1" FontSize="30" TextColor="#28282c" BorderRadius="10" BackgroundColor="#fff" Text="0" Clicked="OnNumberClicked"/>
+
+        <Label x:Name="QuantityField" Grid.Row="5" Grid.Column="0" Text="Quantity" FontSize="20" TextColor="Black"/>
+        <ListView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4"
+                  ItemsSource="{Binding products}"
+                  ItemSelected="OnProductSelected"
+                  ItemTapped="OnProductTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding name}" FontAttributes="Bold" />
+                            <Label Grid.Column="4" Text="{Binding quantity}" VerticalOptions="End" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
