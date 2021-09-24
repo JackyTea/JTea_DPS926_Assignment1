@@ -22,7 +22,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="ProductName" Grid.Row="0" Grid.ColumnSpan="3" Text="Type" TextColor="Black" VerticalOptions="Center" FontSize="30"/>
+        <Label x:Name="ProductName" Grid.Row="0" Grid.ColumnSpan="3" Text="Type" TextColor="Black" VerticalOptions="Center" FontSize="20"/>
         <Button Grid.Row="1" Grid.Column="0" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="1" Clicked="OnNumberClicked"/>
         <Button Grid.Row="1" Grid.Column="1" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="2" Clicked="OnNumberClicked"/>
         <Button Grid.Row="1" Grid.Column="2" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="3" Clicked="OnNumberClicked"/>
@@ -31,7 +31,7 @@
         <Button Grid.Row="2" Grid.Column="0" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="4" Clicked="OnNumberClicked"/>
         <Button Grid.Row="2" Grid.Column="1" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="5" Clicked="OnNumberClicked"/>
         <Button Grid.Row="2" Grid.Column="2" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="6" Clicked="OnNumberClicked"/>
-        <Button Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" FontSize="20" TextColor="White" BorderRadius="10" BackgroundColor="Blue" Text="Buy" FontAttributes="Bold" Clicked="Buy"/>
+        <Button Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" FontSize="20" TextColor="White" BorderRadius="10" BackgroundColor="Blue" Text="Buy" FontAttributes="Bold" Clicked="OnBuyClicked"/>
 
         <Button Grid.Row="3" Grid.Column="0" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="7" Clicked="OnNumberClicked"/>
         <Button Grid.Row="3" Grid.Column="1" FontSize="30" TextColor="Black" BorderRadius="10" BackgroundColor="White" Text="8" Clicked="OnNumberClicked"/>
@@ -39,8 +39,9 @@
 
         <Button Grid.Row="4" Grid.Column="0" FontSize="20" TextColor="#28282c" BorderRadius="10" BackgroundColor="#fff" Text="CE" Clicked="ClearCalculator"/>
         <Button Grid.Row="4" Grid.Column="1" FontSize="30" TextColor="#28282c" BorderRadius="10" BackgroundColor="#fff" Text="0" Clicked="OnNumberClicked"/>
+        <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Text="Manager" BackgroundColor="Red" TextColor="White" BorderRadius="10" Clicked="OnManagerClicked"/>
 
-        <Label x:Name="QuantityField" Grid.Row="5" Grid.Column="0" Text="Quantity" FontSize="20" TextColor="Black"/>
+        <Label x:Name="QuantityField" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Text="Quantity" FontSize="20" TextColor="Black"/>
         <ListView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4"
                   ItemsSource="{Binding products}"
                   ItemSelected="OnProductSelected"

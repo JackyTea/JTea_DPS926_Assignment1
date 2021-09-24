@@ -42,6 +42,12 @@ namespace JTea_DPS926_Assignment1
             Total.Text = "Total";
         }
 
+        private void ClearCalculator(object sender, EventArgs e)
+        {
+            //clear fields
+            ClearCalculatorInputs();
+        }
+
         private void OnProductSelected(object sender, SelectedItemChangedEventArgs e)
         {
             // get current product
@@ -95,10 +101,14 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        private void Buy(object sender, EventArgs e)
+        private void OnBuyClicked(object sender, EventArgs e)
         {
             // find product to buy
-            int currentQuantity = int.Parse(QuantityField.Text);
+            int currentQuantity = 0;
+            if (!QuantityField.Text.Equals("Quantity"))
+            {
+                currentQuantity = int.Parse(QuantityField.Text);
+            }
             int indexOfProduct = 0;
             foreach (Product p in products)
             {
@@ -134,10 +144,9 @@ namespace JTea_DPS926_Assignment1
 
         }
 
-        private void ClearCalculator(object sender, EventArgs e)
+        private async void OnManagerClicked(object sender, EventArgs e)
         {
-            //clear fields
-            ClearCalculatorInputs();
+            await Navigation.PushAsync(new ManagerPage(products));
         }
     }
 }
