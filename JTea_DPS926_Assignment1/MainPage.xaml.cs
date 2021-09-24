@@ -22,9 +22,6 @@ namespace JTea_DPS926_Assignment1
 
             // set the binding context to current page
             BindingContext = this;
-
-            // set quantity label 
-            QuantityField.Text = "0";
         }
 
         private void InitializeProducts()
@@ -38,6 +35,13 @@ namespace JTea_DPS926_Assignment1
             products.Add(new Product("Dress", 24, 100.99));
         }
 
+        private void ClearCalculatorInputs()
+        {
+            ProductName.Text = "Type";
+            QuantityField.Text = "Quantity";
+            Total.Text = "Total";
+        }
+
         private void OnProductSelected(object sender, SelectedItemChangedEventArgs e)
         {
             // get current product
@@ -45,7 +49,7 @@ namespace JTea_DPS926_Assignment1
             ProductName.Text = p.name;
 
             // calculate and display total price
-            if (int.Parse(QuantityField.Text) != 0)
+            if (!QuantityField.Text.Equals("Quantity") && int.Parse(QuantityField.Text) != 0)
             {
                 Total.Text = (p.price * int.Parse(QuantityField.Text)).ToString();
             }
@@ -58,7 +62,7 @@ namespace JTea_DPS926_Assignment1
             ProductName.Text = p.name;
 
             // calculate and display total price
-            if (int.Parse(QuantityField.Text) != 0)
+            if (!QuantityField.Text.Equals("Quantity") && int.Parse(QuantityField.Text) != 0)
             {
                 Total.Text = (p.price * int.Parse(QuantityField.Text)).ToString();
             }
@@ -68,6 +72,10 @@ namespace JTea_DPS926_Assignment1
         {
             // change quantity amount
             Button btn = sender as Button;
+            if (QuantityField.Text.Equals("Quantity"))
+            {
+                QuantityField.Text = "0";
+            }
             if (int.Parse(QuantityField.Text) != 0)
             {
                 QuantityField.Text += btn.Text;
@@ -106,6 +114,7 @@ namespace JTea_DPS926_Assignment1
             {
                 if (products[indexOfProduct].quantity >= currentQuantity)
                 {
+                    // update product in array
                     Product updatedProduct = new Product(
                         products[indexOfProduct].name,
                         products[indexOfProduct].quantity - currentQuantity,
@@ -113,11 +122,12 @@ namespace JTea_DPS926_Assignment1
                     );
                     products[indexOfProduct] = updatedProduct;
 
-                    QuantityField.Text = "0";
-                    Total.Text = "Total";
+                    // clear fields
+                    ClearCalculatorInputs();
                 }
                 else
                 {
+                    // show error message
                     ProductName.Text = products[indexOfProduct].name + " are out of stock! Try again!";
                 }
             }
@@ -126,10 +136,8 @@ namespace JTea_DPS926_Assignment1
 
         private void ClearCalculator(object sender, EventArgs e)
         {
-            // reset fields
-            ProductName.Text = "Select an item";
-            QuantityField.Text = "0";
-            Total.Text = "Total";
+            //clear fields
+            ClearCalculatorInputs();
         }
     }
 }
