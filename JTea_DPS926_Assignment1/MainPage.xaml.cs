@@ -139,6 +139,8 @@ namespace JTea_DPS926_Assignment1
                 {
                     // show error message
                     ProductName.Text = products[indexOfProduct].name + " are out of stock! Try again!";
+                    QuantityField.Text = "Quantity";
+                    Total.Text = "Total";
                 }
             }
 
