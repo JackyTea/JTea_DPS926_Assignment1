@@ -33,7 +33,7 @@ namespace JTea_DPS926_Assignment1
 
         private async void OnAddNewProductClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddNewProductPage());
+            await Navigation.PushAsync(new AddNewProductPage(products));
         }
     }
 }

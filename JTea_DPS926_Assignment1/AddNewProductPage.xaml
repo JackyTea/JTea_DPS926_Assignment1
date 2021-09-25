@@ -5,11 +5,25 @@
     <NavigationPage.TitleView>
         <Label TextColor="White" FontSize="20" FontAttributes="Bold" Text="Add New Product" VerticalTextAlignment="Center"/>
     </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"
+                 Order="Primary"
+                 Priority="0" 
+                 Clicked="OnToolbarSaveClicked"/>
+        <ToolbarItem Text="Cancel"
+                 Order="Primary"
+                 Priority="0" 
+                 Clicked="OnToolbarCancelClicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <TableView Intent="Form" Margin="16" >
+            <TableRoot>
+                <TableSection Title="ADD NEW PRODUCT">
+                    <EntryCell x:Name="AddProductName" Keyboard="Text" Text="" LabelColor="Black" Label="Product Name" Placeholder="Enter Product Name"></EntryCell>
+                    <EntryCell x:Name="AddProductPrice" Keyboard="Numeric" Text="" LabelColor="Black" Label="Price" Placeholder="Enter Product Price"></EntryCell>
+                    <EntryCell x:Name="AddProductQuantity" Keyboard="Numeric" Text="" LabelColor="Black" Label="Quantity" Placeholder="Enter Product Quantity"></EntryCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
     </ContentPage.Content>
 </ContentPage>
