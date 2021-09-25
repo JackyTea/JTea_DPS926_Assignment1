@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JTea_DPS926_Assignment1.ManagerPage">
+    <NavigationPage.TitleView>
+        <Label TextColor="White" FontSize="20" FontAttributes="Bold" Text="Manager Panel" VerticalTextAlignment="Center"/>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Button Text="History" Clicked="OnHistoryClicked"/>

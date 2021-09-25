@@ -21,19 +21,19 @@ namespace JTea_DPS926_Assignment1
             this.products = products;
         }
 
-        private void OnHistoryClicked(object sender, EventArgs e)
+        private async void OnHistoryClicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new PurchasesPage());
         }
 
-        private void OnRestockClicked(object sender, EventArgs e)
+        private async void OnRestockClicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new RestockPage(products));
         }
 
-        private void OnAddNewProductClicked(object sender, EventArgs e)
+        private async void OnAddNewProductClicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new AddNewProductPage());
         }
     }
 }
