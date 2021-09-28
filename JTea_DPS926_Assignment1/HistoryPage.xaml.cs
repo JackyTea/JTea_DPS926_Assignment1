@@ -20,14 +20,10 @@ namespace JTea_DPS926_Assignment1
             BindingContext = this;
         }
 
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void OnHistoryTapped(object sender, ItemTappedEventArgs e)
         {
-
-        }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
+            History h = e.Item as History;
+            await Navigation.PushAsync(new HistoryDetailPage(h));
         }
     }
 }

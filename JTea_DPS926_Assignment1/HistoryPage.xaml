@@ -6,8 +6,7 @@
         <StackLayout>
             <ListView  
                   ItemsSource="{Binding history}"
-                  ItemSelected="ListView_ItemSelected"
-                  ItemTapped="ListView_ItemTapped"
+                  ItemTapped="OnHistoryTapped"
                   RowHeight="60">
                 <ListView.ItemTemplate>
                     <DataTemplate>

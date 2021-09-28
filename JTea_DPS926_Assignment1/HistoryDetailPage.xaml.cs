@@ -12,9 +12,12 @@ namespace JTea_DPS926_Assignment1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoryDetailPage : ContentPage
     {
-        public HistoryDetailPage()
+        public History history { get; private set; }
+        public HistoryDetailPage(History history)
         {
             InitializeComponent();
+            this.history = history;
+            BindingContext = this;
         }
     }
 }
