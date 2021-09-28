@@ -125,12 +125,14 @@ namespace JTea_DPS926_Assignment1
                 if (products[indexOfProduct].quantity >= currentQuantity)
                 {
                     // update product in array
+                    /*
                     Product updatedProduct = new Product(
                         products[indexOfProduct].name,
                         products[indexOfProduct].quantity - currentQuantity,
                         products[indexOfProduct].price
                     );
-                    products[indexOfProduct] = updatedProduct;
+                    */
+                    products[indexOfProduct].quantity -= currentQuantity;
 
                     // clear fields
                     ClearCalculatorInputs();

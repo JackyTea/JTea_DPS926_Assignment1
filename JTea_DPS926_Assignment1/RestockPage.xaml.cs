@@ -48,12 +48,14 @@ namespace JTea_DPS926_Assignment1
                     }
 
                     // update product in array
+                    /*
                     Product updatedProduct = new Product(
                         products[indexOfProduct].name,
                         products[indexOfProduct].quantity + int.Parse(EntryQuantity.Text),
                         products[indexOfProduct].price
                     );
-                    products[indexOfProduct] = updatedProduct;
+                    */
+                    products[indexOfProduct].quantity += int.Parse(EntryQuantity.Text);
 
                     EntryQuantity.Text = "";
                     currentProduct = null;
