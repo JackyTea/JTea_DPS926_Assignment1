@@ -14,11 +14,14 @@ namespace JTea_DPS926_Assignment1
         // a type of list that reacts to changes without having to reload
         public ObservableCollection<Product> products { get; private set; }
 
+        public ObservableCollection<History> history { get; private set; }
+
         public MainPage()
         {
             // initial setup
             InitializeComponent();
             InitializeProducts();
+            InitializeHistory();
 
             // set the binding context to current page
             BindingContext = this;
@@ -33,6 +36,12 @@ namespace JTea_DPS926_Assignment1
             products.Add(new Product("Hats", 10, 3.99));
             products.Add(new Product("T-shirt", 10, 5.99));
             products.Add(new Product("Dress", 24, 100.99));
+        }
+
+        private void InitializeHistory()
+        {
+            // initialize history
+            history = new ObservableCollection<History>();
         }
 
         private void ClearCalculatorInputs()
@@ -134,6 +143,13 @@ namespace JTea_DPS926_Assignment1
                     */
                     products[indexOfProduct].quantity -= currentQuantity;
 
+                    history.Add(new History(
+                        products[indexOfProduct].name,
+                        currentQuantity,
+                        products[indexOfProduct].price * currentQuantity,
+                        DateTime.Now
+                    ));
+
                     // clear fields
                     ClearCalculatorInputs();
                 }
@@ -150,7 +166,7 @@ namespace JTea_DPS926_Assignment1
 
         private async void OnManagerClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ManagerPage(products));
+            await Navigation.PushAsync(new ManagerPage(products, history));
         }
     }
 }

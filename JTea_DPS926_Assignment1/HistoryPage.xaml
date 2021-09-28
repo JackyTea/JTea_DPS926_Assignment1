@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JTea_DPS926_Assignment1.HistoryPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView  
+                  ItemsSource="{Binding history}"
+                  ItemSelected="ListView_ItemSelected"
+                  ItemTapped="ListView_ItemTapped"
+                  RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Padding="10, 10, 0, 0" 
+                                   Text="{Binding name}"
+                                   TextColor="Black"/>
+                                <Label  Padding="10, 0, 0, 0" 
+                                   Text="{Binding quantity}"
+                                   VerticalOptions="End" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

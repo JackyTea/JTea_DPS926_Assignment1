@@ -15,15 +15,18 @@ namespace JTea_DPS926_Assignment1
         // a type of list that reacts to changes without having to reload
         public ObservableCollection<Product> products { get; private set; }
 
-        public ManagerPage(ObservableCollection<Product> products)
+        public ObservableCollection<History> history { get; private set; }
+
+        public ManagerPage(ObservableCollection<Product> products, ObservableCollection<History> history)
         {
             InitializeComponent();
             this.products = products;
+            this.history = history;
         }
 
         private async void OnHistoryClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PurchasesPage());
+            await Navigation.PushAsync(new HistoryPage(history));
         }
 
         private async void OnRestockClicked(object sender, EventArgs e)

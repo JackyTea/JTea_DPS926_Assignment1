@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace JTea_DPS926_Assignment1
 {
-    class History : INotifyPropertyChanged
+    public class History : INotifyPropertyChanged
     {
         // property changed member
         public event PropertyChangedEventHandler PropertyChanged;

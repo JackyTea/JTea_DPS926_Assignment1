@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace JTea_DPS926_Assignment1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PurchasesPage : ContentPage
+    public partial class HistoryDetailPage : ContentPage
     {
-        public PurchasesPage()
+        public HistoryDetailPage()
         {
             InitializeComponent();
         }
