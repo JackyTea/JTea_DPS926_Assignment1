@@ -113,7 +113,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        // item constructor (3 params required)
+        // history constructor (3 params required)
         public History(string name, int quantity, double totalPrice, DateTime purchaseDate)
         {
             this.name = name;
