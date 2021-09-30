@@ -148,9 +148,8 @@ namespace JTea_DPS926_Assignment1
                 }
                 else
                 {
-                    ProductName.Text = products[indexOfProduct].name + " are out of stock! Try again!";
-                    QuantityField.Text = "Quantity";
-                    Total.Text = "Total";
+                    ClearCalculatorInputs();
+                    DisplayAlert("Error", products[indexOfProduct].name + " are out of stock! Try again!", "Ok");
                 }
             }
 
