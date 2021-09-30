@@ -13,10 +13,13 @@ namespace JTea_DPS926_Assignment1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RestockPage : ContentPage
     {
+        // collection of products currently in the store watching for changes
         public ObservableCollection<Product> products { get; private set; }
 
+        // initial null instance of product
         public Product currentProduct = null;
 
+        // constructor for restock page (1 param required)
         public RestockPage(ObservableCollection<Product> products)
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace JTea_DPS926_Assignment1
             BindingContext = this;
         }
 
+        // handle restocking a product (updates quantity)
         private void OnRestockClicked(object sender, EventArgs e)
         {
             if (EntryQuantity.Text.Equals(""))
@@ -47,14 +51,6 @@ namespace JTea_DPS926_Assignment1
                         indexOfProduct++;
                     }
 
-                    // update product in array
-                    /*
-                    Product updatedProduct = new Product(
-                        products[indexOfProduct].name,
-                        products[indexOfProduct].quantity + int.Parse(EntryQuantity.Text),
-                        products[indexOfProduct].price
-                    );
-                    */
                     products[indexOfProduct].quantity += int.Parse(EntryQuantity.Text);
 
                     EntryQuantity.Text = "";
@@ -63,16 +59,19 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
+        // handle canceling a restock and going back
         private async void OnCancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
+        // sets the product instance on select event
         private void OnProductSelected(object sender, SelectedItemChangedEventArgs e)
         {
             currentProduct = e.SelectedItem as Product;
         }
 
+        // sets the product instance on tap event
         private void OnProductTapped(object sender, ItemTappedEventArgs e)
         {
             currentProduct = e.Item as Product;

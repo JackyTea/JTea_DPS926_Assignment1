@@ -8,10 +8,10 @@ namespace JTea_DPS926_Assignment1
 {
     public class History : INotifyPropertyChanged
     {
-        // property changed member
+        // property change event implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // backing field members
+        // backing fields
         private string _name;
 
         private int _quantity;
@@ -20,7 +20,7 @@ namespace JTea_DPS926_Assignment1
 
         private DateTime _purchaseDate;
 
-        // name of the item sold (e.g. Pants, Shoes, Hat)
+        // name of the product bought
         public string name
         {
             get
@@ -43,8 +43,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-
-        // quantity bought
+        // amount of product purchased for a transaction
         public int quantity
         {
             get
@@ -67,7 +66,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        // money spent buying products
+        // money spent on transaction (quantity bought * price of product)
         public double totalPrice
         {
             get
@@ -90,7 +89,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        // date of purchase
+        // date and time of transaction (DateTime.now)
         public DateTime purchaseDate
         {
             get
@@ -113,7 +112,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        // history constructor (3 params required)
+        // historical record constructor (4 required parameters)
         public History(string name, int quantity, double totalPrice, DateTime purchaseDate)
         {
             this.name = name;

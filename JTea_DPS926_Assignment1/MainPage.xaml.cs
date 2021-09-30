@@ -11,25 +11,25 @@ namespace JTea_DPS926_Assignment1
 {
     public partial class MainPage : ContentPage
     {
-        // a type of list that reacts to changes without having to reload
+
+        // collection of products available to buy that watches for changes
         public ObservableCollection<Product> products { get; private set; }
 
+        // collection of historical records to be updated when a product is bought
         public ObservableCollection<History> history { get; private set; }
 
+        // constructor for main page (0 params)
         public MainPage()
         {
-            // initial setup
             InitializeComponent();
             InitializeProducts();
             InitializeHistory();
-
-            // set the binding context to current page
             BindingContext = this;
         }
 
+        // helper function to put in products for sale
         private void InitializeProducts()
         {
-            // initialize products available to store
             products = new ObservableCollection<Product>();
             products.Add(new Product("Pants", 20, 7.99));
             products.Add(new Product("Shoes", 50, 45.99));
@@ -38,12 +38,13 @@ namespace JTea_DPS926_Assignment1
             products.Add(new Product("Dress", 24, 100.99));
         }
 
+        // helper function to set history collection
         private void InitializeHistory()
         {
-            // initialize history
             history = new ObservableCollection<History>();
         }
 
+        // helper function to clear calculator fields
         private void ClearCalculatorInputs()
         {
             ProductName.Text = "Type";
@@ -51,46 +52,46 @@ namespace JTea_DPS926_Assignment1
             Total.Text = "Total";
         }
 
+        // helper function to clear calculator
         private void ClearCalculator(object sender, EventArgs e)
         {
-            //clear fields
             ClearCalculatorInputs();
         }
 
+        // handle user selecting a product in the listview
         private void OnProductSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            // get current product
             Product p = e.SelectedItem as Product;
             ProductName.Text = p.name;
 
-            // calculate and display total price
             if (!QuantityField.Text.Equals("Quantity") && int.Parse(QuantityField.Text) != 0)
             {
                 Total.Text = (p.price * int.Parse(QuantityField.Text)).ToString();
             }
         }
 
+        // handle user tapping a product in the listview
         private void OnProductTapped(object sender, ItemTappedEventArgs e)
         {
-            // get current product
             Product p = e.Item as Product;
             ProductName.Text = p.name;
 
-            // calculate and display total price
             if (!QuantityField.Text.Equals("Quantity") && int.Parse(QuantityField.Text) != 0)
             {
                 Total.Text = (p.price * int.Parse(QuantityField.Text)).ToString();
             }
         }
 
+        // handle user clicking on a button on the calculator number grid
         private void OnNumberClicked(object sender, EventArgs e)
         {
-            // change quantity amount
             Button btn = sender as Button;
+
             if (QuantityField.Text.Equals("Quantity"))
             {
                 QuantityField.Text = "0";
             }
+
             if (int.Parse(QuantityField.Text) != 0)
             {
                 QuantityField.Text += btn.Text;
@@ -100,7 +101,6 @@ namespace JTea_DPS926_Assignment1
                 QuantityField.Text = btn.Text;
             }
 
-            // calculate total with quantity
             foreach (Product p in products)
             {
                 if (p.name.Equals(ProductName.Text))
@@ -110,15 +110,18 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
+        // handle a product being bought 
         private void OnBuyClicked(object sender, EventArgs e)
         {
-            // find product to buy
             int currentQuantity = 0;
+
             if (!QuantityField.Text.Equals("Quantity"))
             {
                 currentQuantity = int.Parse(QuantityField.Text);
             }
+
             int indexOfProduct = 0;
+
             foreach (Product p in products)
             {
                 if (p.name.Equals(ProductName.Text))
@@ -128,19 +131,10 @@ namespace JTea_DPS926_Assignment1
                 indexOfProduct++;
             }
 
-            // check stock of products
             if (indexOfProduct >= 0 && indexOfProduct < products.Count)
             {
                 if (products[indexOfProduct].quantity >= currentQuantity)
                 {
-                    // update product in array
-                    /*
-                    Product updatedProduct = new Product(
-                        products[indexOfProduct].name,
-                        products[indexOfProduct].quantity - currentQuantity,
-                        products[indexOfProduct].price
-                    );
-                    */
                     products[indexOfProduct].quantity -= currentQuantity;
 
                     history.Add(new History(
@@ -150,12 +144,10 @@ namespace JTea_DPS926_Assignment1
                         DateTime.Now
                     ));
 
-                    // clear fields
                     ClearCalculatorInputs();
                 }
                 else
                 {
-                    // show error message
                     ProductName.Text = products[indexOfProduct].name + " are out of stock! Try again!";
                     QuantityField.Text = "Quantity";
                     Total.Text = "Total";
@@ -164,6 +156,7 @@ namespace JTea_DPS926_Assignment1
 
         }
 
+        // navigates to manager panel 
         private async void OnManagerClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ManagerPage(products, history));

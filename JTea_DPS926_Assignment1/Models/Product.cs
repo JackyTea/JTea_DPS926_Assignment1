@@ -7,17 +7,17 @@ namespace JTea_DPS926_Assignment1
 {
     public class Product : INotifyPropertyChanged
     {
-        // property changed member
+        // property change event implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // backing field members
+        // backing fields
         private string _name;
 
         private int _quantity;
 
         private double _price;
 
-        // name of the item sold (e.g. Pants, Shoes, Hat)
+        // name of the product
         public string name
         {
             get
@@ -40,7 +40,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        // quantity available in store's stock
+        // amount of available stock for a product
         public int quantity
         {
             get
@@ -63,7 +63,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        // price of this item (e.g. $19.99, currency not specified)
+        // the asking price for a product sold
         public double price
         {
             get
@@ -86,7 +86,7 @@ namespace JTea_DPS926_Assignment1
             }
         }
 
-        // item constructor (3 params required)
+        // product constructor (3 params required)
         public Product(string name, int quantity, double price)
         {
             this.name = name;

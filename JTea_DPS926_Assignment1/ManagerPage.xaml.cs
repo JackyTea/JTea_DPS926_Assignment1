@@ -12,11 +12,13 @@ namespace JTea_DPS926_Assignment1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManagerPage : ContentPage
     {
-        // a type of list that reacts to changes without having to reload
+        // collection of products available in the store that watches for changes
         public ObservableCollection<Product> products { get; private set; }
 
+        // collection of historical records ready to be viewed and watch for changes
         public ObservableCollection<History> history { get; private set; }
 
+        // constructor for manager page (2 params required)
         public ManagerPage(ObservableCollection<Product> products, ObservableCollection<History> history)
         {
             InitializeComponent();
@@ -24,16 +26,19 @@ namespace JTea_DPS926_Assignment1
             this.history = history;
         }
 
+        // navigate to history page
         private async void OnHistoryClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new HistoryPage(history));
         }
 
+        // navigate to restock page
         private async void OnRestockClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RestockPage(products));
         }
 
+        // navigate to add new product page
         private async void OnAddNewProductClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddNewProductPage(products));
