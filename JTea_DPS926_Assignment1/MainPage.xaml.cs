@@ -149,7 +149,7 @@ namespace JTea_DPS926_Assignment1
                 else
                 {
                     ClearCalculatorInputs();
-                    DisplayAlert("Error", products[indexOfProduct].name + " are out of stock! Try again!", "Ok");
+                    DisplayAlert("Error", products[indexOfProduct].name + " are out of stock or you have ordered too much! Try again!", "Ok");
                 }
             }
 
