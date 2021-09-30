@@ -25,7 +25,7 @@ namespace JTea_DPS926_Assignment1
         // handling toolbar "save" button clicked
         private async void OnToolbarSaveClicked(object sender, EventArgs e)
         {
-            if (AddProductName.Text.Equals("") && AddProductPrice.Text.Equals("") && AddProductQuantity.Text.Equals(""))
+            if (AddProductName.Text.Equals("") || AddProductPrice.Text.Equals("") || AddProductQuantity.Text.Equals(""))
             {
                 await DisplayAlert("Error", "Please fill out all form fields", "Ok");
             }
