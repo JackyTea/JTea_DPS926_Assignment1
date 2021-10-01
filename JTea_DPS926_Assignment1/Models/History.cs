@@ -6,88 +6,13 @@ using System.ComponentModel;
 
 namespace JTea_DPS926_Assignment1
 {
-    public class History : INotifyPropertyChanged
+    public class History : Product, INotifyPropertyChanged
     {
         // property change event implementation
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler HistoryPropertyChanged;
 
         // backing fields
-        private string _name;
-
-        private int _quantity;
-
-        private double _totalPrice;
-
         private DateTime _purchaseDate;
-
-        // name of the product bought
-        public string name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                if (value == _name)
-                {
-                    return;
-                }
-
-                _name = value;
-
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(name)));
-                }
-            }
-        }
-
-        // amount of product purchased for a transaction
-        public int quantity
-        {
-            get
-            {
-                return _quantity;
-            }
-            set
-            {
-                if (value == _quantity)
-                {
-                    return;
-                }
-
-                _quantity = value;
-
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(quantity)));
-                }
-            }
-        }
-
-        // money spent on transaction (quantity bought * price of product)
-        public double totalPrice
-        {
-            get
-            {
-                return _totalPrice;
-            }
-            set
-            {
-                if (value == _totalPrice)
-                {
-                    return;
-                }
-
-                _totalPrice = value;
-
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(totalPrice)));
-                }
-            }
-        }
 
         // date and time of transaction (DateTime.now)
         public DateTime purchaseDate
@@ -105,19 +30,16 @@ namespace JTea_DPS926_Assignment1
 
                 _purchaseDate = value;
 
-                if (PropertyChanged != null)
+                if (HistoryPropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(purchaseDate)));
+                    HistoryPropertyChanged(this, new PropertyChangedEventArgs(nameof(purchaseDate)));
                 }
             }
         }
 
         // historical record constructor (4 required parameters)
-        public History(string name, int quantity, double totalPrice, DateTime purchaseDate)
+        public History(string name, int quantity, double totalPrice, DateTime purchaseDate) : base(name, quantity, totalPrice)
         {
-            this.name = name;
-            this.quantity = quantity;
-            this.totalPrice = totalPrice;
             this.purchaseDate = purchaseDate;
         }
     }

@@ -12,7 +12,7 @@
             <Label TextColor="Black" Text="{Binding history.name, StringFormat='Product: {0}'}"/>
             <Label TextColor="Black" Text="{Binding history.quantity, StringFormat='Quantity: {0}'}"/>
             <Label TextColor="Black" Text="{Binding history.purchaseDate, StringFormat='Date: {0}'}"/>
-            <Label TextColor="Black" Text="{Binding history.totalPrice, StringFormat='Total amount: ${0:F2}'}"/>
+            <Label TextColor="Black" Text="{Binding history.price, StringFormat='Total amount: ${0:F2}'}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
